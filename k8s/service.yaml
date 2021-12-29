@@ -2,8 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    app.quarkus.io/commit-id: 15a31d079d4e5b2672d56de2dbd7695f1c5b7d11
-    app.quarkus.io/build-timestamp: 2021-12-29 - 17:32:04 +0000
+    app.quarkus.io/commit-id: b4dbd5b9239b57fc4200a7952f90a3fe327e3282
+    app.quarkus.io/build-timestamp: 2021-12-29 - 21:55:14 +0000
     dev.okteto.com/auto-ingress: "true"
   labels:
     app.kubernetes.io/name: ws-rest-api
