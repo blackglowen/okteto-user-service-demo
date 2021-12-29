@@ -1,0 +1,104 @@
+[
+  {
+    "apiVersion": "v1",
+    "kind": "Service",
+    "metadata": {
+      "annotations": {
+        "app.quarkus.io/commit-id": "15a31d079d4e5b2672d56de2dbd7695f1c5b7d11",
+        "app.quarkus.io/build-timestamp": "2021-12-29 - 17:32:04 +0000"
+      },
+      "labels": {
+        "app.kubernetes.io/name": "ws-rest-api",
+        "app.kubernetes.io/version": "1.0.0-SNAPSHOT"
+      },
+      "name": "ws-rest-api"
+    },
+    "spec": {
+      "ports": [
+        {
+          "name": "http",
+          "port": 80,
+          "targetPort": 8080
+        }
+      ],
+      "selector": {
+        "app.kubernetes.io/name": "ws-rest-api",
+        "app.kubernetes.io/version": "1.0.0-SNAPSHOT"
+      },
+      "type": "ClusterIP"
+    }
+  },
+  {
+    "apiVersion": "apps/v1",
+    "kind": "Deployment",
+    "metadata": {
+      "annotations": {
+        "app.quarkus.io/commit-id": "15a31d079d4e5b2672d56de2dbd7695f1c5b7d11",
+        "app.quarkus.io/build-timestamp": "2021-12-29 - 17:32:04 +0000"
+      },
+      "labels": {
+        "app.kubernetes.io/name": "ws-rest-api",
+        "app.kubernetes.io/version": "1.0.0-SNAPSHOT"
+      },
+      "name": "ws-rest-api"
+    },
+    "spec": {
+      "replicas": 1,
+      "selector": {
+        "matchLabels": {
+          "app.kubernetes.io/name": "ws-rest-api",
+          "app.kubernetes.io/version": "1.0.0-SNAPSHOT"
+        }
+      },
+      "template": {
+        "metadata": {
+          "annotations": {
+            "app.quarkus.io/commit-id": "15a31d079d4e5b2672d56de2dbd7695f1c5b7d11",
+            "app.quarkus.io/build-timestamp": "2021-12-29 - 17:32:04 +0000"
+          },
+          "labels": {
+            "app.kubernetes.io/name": "ws-rest-api",
+            "app.kubernetes.io/version": "1.0.0-SNAPSHOT"
+          }
+        },
+        "spec": {
+          "containers": [
+            {
+              "command": [
+                "java",
+                "-Dquarkus.http.host=0.0.0.0",
+                "-Djava.util.logging.manager=org.jboss.logmanager.LogManager",
+                "-jar",
+                "/deployments/quarkus-run.jar"
+              ],
+              "env": [
+                {
+                  "name": "KUBERNETES_NAMESPACE",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "fieldPath": "metadata.namespace"
+                    }
+                  }
+                },
+                {
+                  "name": "JAVA_APP_JAR",
+                  "value": "/deployments/quarkus-run.jar"
+                }
+              ],
+              "image": "trabdlkarim/ws-rest-api:1.0.0-SNAPSHOT",
+              "imagePullPolicy": "Always",
+              "name": "ws-rest-api",
+              "ports": [
+                {
+                  "containerPort": 8080,
+                  "name": "http",
+                  "protocol": "TCP"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+]

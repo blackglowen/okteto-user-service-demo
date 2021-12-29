@@ -1,20 +1,15 @@
-greeting:
-  message: Hello
-  name: quarkus
-
 app:
-  name: "Teraryum App API Backend"  
-
+  name: "Teraryum User Service"  
 
 quarkus:
   datasource:
     db-kind: mysql
-    username: terasys
+    username: u670356437_teraryum
     password: epkh4Q*d2nHb618u
     jdbc: 
       ~: false
     reactive:
-      url: vertx-reactive:mysql://localhost:3306/tera_api_backend
+      url: vertx-reactive:mysql://sql418.main-hosting.eu:3306/u670356437_tera_users
       max-size: 20
 
   # drop and create the database at startup (use `update` to only update the schema)
