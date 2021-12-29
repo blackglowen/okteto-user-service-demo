@@ -5,6 +5,7 @@ metadata:
   annotations:
     app.quarkus.io/commit-id: 15a31d079d4e5b2672d56de2dbd7695f1c5b7d11
     app.quarkus.io/build-timestamp: 2021-12-29 - 17:32:04 +0000
+    dev.okteto.com/auto-ingress: "true"
   labels:
     app.kubernetes.io/name: ws-rest-api
     app.kubernetes.io/version: 1.0.0-SNAPSHOT
@@ -12,7 +13,7 @@ metadata:
 spec:
   ports:
     - name: http
-      port: 80
+      port: 8080
       targetPort: 8080
   selector:
     app.kubernetes.io/name: ws-rest-api
