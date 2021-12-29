@@ -1,0 +1,34 @@
+greeting:
+  message: Hello
+  name: quarkus
+
+app:
+  name: "Teraryum App API Backend"  
+
+
+quarkus:
+  datasource:
+    db-kind: mysql
+    username: terasys
+    password: epkh4Q*d2nHb618u
+    jdbc: 
+      ~: false
+    reactive:
+      url: vertx-reactive:mysql://localhost:3306/tera_api_backend
+      max-size: 20
+
+  # drop and create the database at startup (use `update` to only update the schema)
+  hibernate-orm:
+    database:
+      generation: 
+        ~: drop-and-create
+    log:
+      sql: true
+    sql-load-script: import.sql
+  
+  smallrye-openapi:
+    path: /cpanel/openapi
+
+  swagger-ui:
+      always-include: true
+      path: /cpanel/swagger
