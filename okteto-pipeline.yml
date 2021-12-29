@@ -1,0 +1,4 @@
+icon: https://avatars.githubusercontent.com/u/96443780?s=200&v=4
+deploy:
+  - okteto build -t okteto.dev/teraryumapp-ws-demo:latest
+  - kubectl apply -f k8s
